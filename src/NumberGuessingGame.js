@@ -14,6 +14,7 @@ const  NumberGuessingGame = () => {
   const [latestGuess, setLatestGuess] = useState(null);
 
   const handleGuess = (guess) => {
+    console.log("guess   " + guess)
     setLatestGuess(guess);
     setNumberOfGuesses(prevNumberOfGuesses => prevNumberOfGuesses + 1);
   };
@@ -24,10 +25,16 @@ const  NumberGuessingGame = () => {
     setLatestGuess(null);
     console.log("in the handlereset")
   }
-console.log(numberToGuess)
+  
+  console.log("number to guess   " + numberToGuess)
+  console.log("latest guess   " + latestGuess)
   const isCorrectGuess = latestGuess === numberToGuess;
+  console.log("number of guesses   " + numberOfGuesses)
   const isGameOver =
     isCorrectGuess || numberOfGuesses === MAX_ATTEMPTS;
+
+  console.log("isgameover   " + isGameOver)
+
 
   return (
     <div>
@@ -35,8 +42,10 @@ console.log(numberToGuess)
       <h2>
         Can you guess the number I am thinking of in {MAX_ATTEMPTS} tries?
       </h2>
-      <GuessControl onGuess={handleGuess} />
-      {isGameOver && (
+      {!isGameOver && (
+       <GuessControl onGuess={handleGuess} />
+      )}
+       {isGameOver && (
         <GameOver hasWon={isCorrectGuess} onReset={handleReset} />
       )}
       {!isGameOver && (

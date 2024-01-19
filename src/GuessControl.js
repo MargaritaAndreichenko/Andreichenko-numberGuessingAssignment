@@ -6,7 +6,7 @@ const  GuessControl = ({ onGuess }) => {
   const [currentGuess, setCurrentGuess] = useState("");
 
   const onSubmitGuess = () => {
-
+    console.log(currentGuess)
     onGuess(Number(currentGuess));
 
     setCurrentGuess("");
@@ -14,7 +14,6 @@ const  GuessControl = ({ onGuess }) => {
   };
 
   const handleInputChange = (event) => {
-
     setCurrentGuess(event.target.value);
   };
 
