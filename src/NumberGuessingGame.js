@@ -5,16 +5,18 @@ import GameOver from "./GameOver";
 
 const MAX_ATTEMPTS = 5;
 
-const  NumberGuessingGame = () => {
-  const getRandomNumber = () =>  {
+const NumberGuessingGame = () => {
+
+  const getRandomNumber = () => {
     return Math.floor(Math.random() * 100) + 1;
+  
   };
   const [numberToGuess, setNumberToGuess] = useState(getRandomNumber());
+  console.log(numberToGuess)
   const [numberOfGuesses, setNumberOfGuesses] = useState(0);
   const [latestGuess, setLatestGuess] = useState(null);
 
   const handleGuess = (guess) => {
-    console.log("guess   " + guess)
     setLatestGuess(guess);
     setNumberOfGuesses(prevNumberOfGuesses => prevNumberOfGuesses + 1);
   };
@@ -23,18 +25,11 @@ const  NumberGuessingGame = () => {
     setNumberToGuess(getRandomNumber());
     setNumberOfGuesses(0);
     setLatestGuess(null);
-    console.log("in the handlereset")
   }
-  
-  console.log("number to guess   " + numberToGuess)
-  console.log("latest guess   " + latestGuess)
+
   const isCorrectGuess = latestGuess === numberToGuess;
-  console.log("number of guesses   " + numberOfGuesses)
   const isGameOver =
     isCorrectGuess || numberOfGuesses === MAX_ATTEMPTS;
-
-  console.log("isgameover   " + isGameOver)
-
 
   return (
     <div>
@@ -43,9 +38,9 @@ const  NumberGuessingGame = () => {
         Can you guess the number I am thinking of in {MAX_ATTEMPTS} tries?
       </h2>
       {!isGameOver && (
-       <GuessControl onGuess={handleGuess} />
+        <GuessControl onGuess={handleGuess} />
       )}
-       {isGameOver && (
+      {isGameOver && (
         <GameOver hasWon={isCorrectGuess} onReset={handleReset} />
       )}
       {!isGameOver && (
