@@ -42,22 +42,21 @@ const NumberGuessingGame = () => {
       <h2>I'm thinking of a number from 1 to 100.</h2>
       <h2>
         Can you guess the number I am thinking of in {MAX_ATTEMPTS} tries?
-      </h2>
-      {!isGameOver && (
-        <GuessControl onGuess={handleGuess} />
-      )}
-      {isGameOver && (
-        <GameOver hasWon={isCorrectGuess} onReset={handleReset} />
-      )}
-      {!isGameOver && (
-        <GuessMessage
-          guess={latestGuess}
-          numberToGuess={numberToGuess}
-          numberOfGuesses={numberOfGuesses}
-        />
-      )}
-    </div>
-  );
+        </h2>
+            {!isGameOver ? (
+                <>
+                    <GuessControl onGuess={handleGuess} />
+                    <GuessMessage
+                        guess={latestGuess}
+                        numberToGuess={numberToGuess}
+                        numberOfGuesses={numberOfGuesses}
+                    />
+                </>
+            ) :
+                <GameOver hasWon={isCorrectGuess} onReset={handleReset} />
+            }
+        </div>
+    );
 };
 
 export default NumberGuessingGame;
