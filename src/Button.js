@@ -6,7 +6,7 @@ const buttonStyle = {
 
 const Button = ({ onClick, children }) => {
   return (
-    <button style={buttonStyle} onClick={onClick} type="button">
+    <button style={buttonStyle} onClick={onClick} >
       {children}
     </button>
   );

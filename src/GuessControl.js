@@ -8,9 +8,7 @@ const  GuessControl = ({ onGuess }) => {
   const onSubmitGuess = () => {
     console.log(currentGuess)
     onGuess(Number(currentGuess));
-
     setCurrentGuess("");
-   
   };
 
   const handleInputChange = (event) => {
